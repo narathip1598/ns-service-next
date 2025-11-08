@@ -72,5 +72,18 @@
   "OurServicesPage": {
     "description": "<p>นี่คือหน้าบริการของเรา</p><p>มันแสดงให้เห็นว่าเส้นทางสามารถซ้อนกันและรองรับหลายภาษาได้เช่นกัน</p>",
     "title": "บริการของเรา"
+  },
+  "footer": {
+    "officeTitle": "สำนักงานใหญ่",
+    "addressLine1": "13",
+    "addressLine2": "ถนนพระราม 2 แขวงแสมดำ เขตบางขุนเทียน",
+    "addressLine3": "กรุงเทพมหานคร 10150",
+    "contactTitle": "ช่องทางการติดต่อ",
+    "phoneLabel": "+66 818349165",
+    "phoneLabel2": "+66 638242260",
+    "emailLabel": "naynoyclab@gmail.com",
+    "emailLabel2": "maykanteerawichaikul@gmail.com",
+    "facebookLabel": "https://www.facebook.com/profile.php?id=61579590274508",
+    "youtubeLabel": "TMT STEEL"
   }
 }

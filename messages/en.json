@@ -72,5 +72,18 @@
   "OurServicesPage": {
     "description": "<p>This is the Our Services page.</p><p>It demonstrates that pathnames can be nested and internationalized as well.</p>",
     "title": "Our Services"
+  },
+  "footer": {
+    "officeTitle": "HEADQUARTER",
+    "addressLine1": "13",
+    "addressLine2": "Rama II Road, Samaedam, Bangkhunthian",
+    "addressLine3": "Bangkok 10150",
+    "contactTitle": "Contact Channels",
+    "phoneLabel": "+66 818349165",
+    "phoneLabel2": "+66 638242260",
+    "emailLabel": "naynoyclab@gmail.com",
+    "emailLabel2": "maykanteerawichaikul@gmail.com",
+    "facebookLabel": "https://www.facebook.com/profile.php?id=61579590274508",
+    "youtubeLabel": "TMT STEEL"
   }
 }
