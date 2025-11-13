@@ -4,8 +4,8 @@
     "title": "Something went wrong!"
   },
   "IndexPage": {
-    "description": "This is a basic example that demonstrates the usage of next-intl with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-    "title": "NS Service",
+    "description": "Injection Molding Service Center",
+    "title": "N.S. Service (Thailand) CO., LTD.",
     "ourService": {
       "title": "Our Service",
       "ownerAlt": "ผู้บริหาร",
