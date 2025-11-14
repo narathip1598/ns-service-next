@@ -1,27 +1,57 @@
-import { Locale, useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
-import PageLayout from '@/components/PageLayout';
+import { Locale } from "next-intl";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import PageLayout from "@/components/PageLayout";
+import "../styles.css";
+import OurServiceSection from "@/components/sections/OurServiceSection";
 
-export default function ServicesPage({
-  params
-}: PageProps<'/[locale]/services'>) {
-  const { locale } = use(params);
+import Footer from "@/components/Footer";
 
-  setRequestLocale(locale as Locale);
+type PageParams = { locale: Locale };
 
-  const t = useTranslations('ServicesPage');
+export default async function ServicesPage({
+  params,
+}: {
+  params: Promise<PageParams>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations({ locale, namespace: "IndexPage" });
+  const f = await getTranslations({ locale, namespace: "footer" });
+
+  const serviceCards = [
+    {
+      imgSrc: "/image/news1.png",
+      title: t("ourService.card1.title"),
+      description: t("ourService.card1.description"),
+      alt: t("ourService.card1.alt"),
+    },
+    {
+      imgSrc: "/image/news2.png",
+      title: t("ourService.card2.title"),
+      description: t("ourService.card2.description"),
+      alt: t("ourService.card2.alt"),
+    },
+    {
+      imgSrc: "/image/news3.png",
+      title: t("ourService.card3.title"),
+      description: t("ourService.card3.description"),
+      alt: t("ourService.card3.alt"),
+    },
+    {
+      imgSrc: "/image/news4.png",
+      title: t("ourService.card4.title"),
+      description: t("ourService.card4.description"),
+      alt: t("ourService.card4.alt"),
+    },
+  ];
+
+  const FOOTER_IMG = "/image/Com_Logo-removebg-preview-2.png";
 
   return (
     <PageLayout>
-      <div className="max-w-[490px]">
-        {t.rich('description', {
-          p: (chunks) => <p className="mt-4">{chunks}</p>,
-          code: (chunks) => (
-            <code className="font-mono text-white">{chunks}</code>
-          )
-        })}
-      </div>
+      <OurServiceSection t={t} cards={serviceCards}/>
+      <Footer t={f} imgSrc={FOOTER_IMG} />
     </PageLayout>
   );
 }

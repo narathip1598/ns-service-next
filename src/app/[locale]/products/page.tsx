@@ -1,23 +1,31 @@
-import {Locale, useTranslations} from 'next-intl';
-import {setRequestLocale} from 'next-intl/server';
-import {use} from 'react';
-import PageLayout from '@/components/PageLayout';
+import { Locale } from "next-intl";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import PageLayout from "@/components/PageLayout";
+import "../styles.css";
 
-export default function ProductsPage({
-  params
-}: PageProps<'/[locale]/products'>) {
-  const {locale} = use(params);
-  setRequestLocale(locale as Locale);
+import Footer from "@/components/Footer";
 
-  const t = useTranslations('ProductsPage');
+type PageParams = { locale: Locale };
 
-  return (  
+export default async function ProductsPage({
+  params,
+}: {
+  params: Promise<PageParams>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations({ locale, namespace: "IndexPage" });
+  const f = await getTranslations({ locale, namespace: "footer" });
+
+ 
+
+  const FOOTER_IMG = "/image/Com_Logo-removebg-preview-2.png";
+
+  return (
     <PageLayout>
-      <div className="max-w-[490px]">
-        {t.rich('description', {
-          p: (chunks) => <p className="mt-4">{chunks}</p>
-        })}
-      </div>
+
+      <Footer t={f} imgSrc={FOOTER_IMG} />
     </PageLayout>
   );
 }
