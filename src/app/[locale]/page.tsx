@@ -20,7 +20,7 @@ export default async function IndexPage({
   const t = await getTranslations({ locale, namespace: "IndexPage" });
   const f = await getTranslations({ locale, namespace: "footer" });
 
-  const HERO_IMG = "/image/test.jpg";
+  const HERO_IMG = "/image/hero.jpg";
   const OWNER_IMG = "/image/owner.png";
   const COMPANY_IMG = "/image/company-profile.png";
 

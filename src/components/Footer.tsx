@@ -2,6 +2,12 @@ import Link from "next/link";
 import type { getTranslations } from "next-intl/server";
 import Image from 'next/image';
 import CompanyLogo from '@/image/Com_Logo.png';
+import {
+  Phone,
+  Mail,
+  Facebook,
+} from "lucide-react";
+
 
 // Same type as returned by getTranslations<'footer'>
 type FooterT = Awaited<ReturnType<typeof getTranslations<"footer">>>;
@@ -37,27 +43,27 @@ export default function Footer({ t }: FooterProps) {
             <SectionTitle>{t("contactTitle")}</SectionTitle>
             <div className="mt-4 flex flex-col gap-3">
               <FooterContact
-                icon="📞"
+                icon={<Phone size={18} />}
                 label="+66 818349165"
                 href="tel:+66818349165"
               />
               <FooterContact
-                icon="📞"
+                icon={<Phone size={18} />}
                 label="+66 638242260"
                 href="tel:+66638242260"
               />
               <FooterContact
-                icon="✉️"
+                icon={<Mail size={18} />}
                 label={t("emailLabel")}
                 href={`mailto:${t("emailLabel")}`}
               />
               <FooterContact
-                icon="✉️"
+                icon={<Mail size={18} />}
                 label={t("emailLabel2")}
                 href={`mailto:${t("emailLabel2")}`}
               />
               <FooterContact
-                icon="📘"
+                icon={<Facebook size={18} />}
                 label="N.S. Service Thailand - Injection Molding Service Center"
                 href={t("facebookLabel")}
                 newTab
@@ -100,14 +106,14 @@ function FooterContact({
   href,
   newTab = false,
 }: {
-  icon: string;
+  icon: React.ReactNode;   // 👈 changed
   label: string;
   href?: string;
   newTab?: boolean;
 }) {
   const content = (
     <>
-      <span className="w-5 text-lg leading-none">{icon}</span>
+      <span className="text-white">{icon}</span>
       <span>{label}</span>
     </>
   );
