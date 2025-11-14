@@ -44,8 +44,8 @@
   },
   "Navigation": {
     "home": "Home",
-    "pathnames": "Pathnames",
-    "ourServices": "Our-Services"
+    "services": "Services",
+    "products": "Products"
   },
   "NotFoundPage": {
     "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
@@ -65,13 +65,13 @@
       }
     }
   },
-  "PathnamesPage": {
-    "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
-    "title": "Pathnames"
+  "ServicesPage": {
+    "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/services</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/dienstleistungen</code>).</p>",
+    "title": "Services"
   },
-  "OurServicesPage": {
+  "ProductsPage": {
     "description": "<p>This is the Our Services page.</p><p>It demonstrates that pathnames can be nested and internationalized as well.</p>",
-    "title": "Our Services"
+    "title": "Products"
   },
   "footer": {
     "officeTitle": "HEADQUARTER",

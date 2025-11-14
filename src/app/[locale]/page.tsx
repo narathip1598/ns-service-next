@@ -42,12 +42,14 @@ export default async function IndexPage({
     },
   ];
 
+  const FOOTER_IMG = "/image/Com_Logo-removebg-preview-2.png";
+
   return (
     <PageLayout>
       <Hero imgSrc={HERO_IMG} title={t("title")} description={t("description")} />
       <OurServiceSection t={t} cards={serviceCards} ownerImgSrc={OWNER_IMG} />
       <CompanyProfileSection t={t} imageSrc={COMPANY_IMG} />
-      <Footer t={f} />
+      <Footer t={f} imgSrc={FOOTER_IMG} />
     </PageLayout>
   );
 }

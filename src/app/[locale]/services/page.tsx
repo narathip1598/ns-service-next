@@ -3,14 +3,14 @@ import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 import PageLayout from '@/components/PageLayout';
 
-export default function PathnamesPage({
+export default function ServicesPage({
   params
-}: PageProps<'/[locale]/pathnames'>) {
+}: PageProps<'/[locale]/services'>) {
   const { locale } = use(params);
 
   setRequestLocale(locale as Locale);
 
-  const t = useTranslations('PathnamesPage');
+  const t = useTranslations('ServicesPage');
 
   return (
     <PageLayout>

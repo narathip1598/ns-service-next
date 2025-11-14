@@ -3,15 +3,15 @@ import {setRequestLocale} from 'next-intl/server';
 import {use} from 'react';
 import PageLayout from '@/components/PageLayout';
 
-export default function OurServicesPage({
+export default function ProductsPage({
   params
-}: PageProps<'/[locale]/our-services'>) {
+}: PageProps<'/[locale]/products'>) {
   const {locale} = use(params);
   setRequestLocale(locale as Locale);
 
-  const t = useTranslations('OurServicesPage');
+  const t = useTranslations('ProductsPage');
 
-  return (
+  return (  
     <PageLayout>
       <div className="max-w-[490px]">
         {t.rich('description', {
