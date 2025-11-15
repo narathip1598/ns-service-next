@@ -2,20 +2,22 @@ import { useTranslations } from 'next-intl';
 import LocaleSwitcher from './LocaleSwitcher';
 import NavigationLink from './NavigationLink';
 import Image from 'next/image';
-import Logo from '@/image/Com_Logo.png';
 
-export default function Navigation() {
+type NavigationProps = {
+  imgSrc: string;
+};
+
+export default function Navigation({ imgSrc }: NavigationProps) {
   const t = useTranslations('Navigation');
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-850/90 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-850/90 backdrop-blur">
       <nav className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* LEFT: Logo + navigation links */}
         <div className="flex items-center gap-6">
           <NavigationLink href="/" className="p-0">
             <span className="sr-only">{t('home')}</span>
             <Image
-              src={Logo}
+              src={imgSrc}
               alt="Company logo"
               width={36}
               height={36}
@@ -26,8 +28,8 @@ export default function Navigation() {
 
           <div className="hidden sm:flex items-center gap-4">
             <NavigationLink href="/">{t('home')}</NavigationLink>
-            <NavigationLink href="/pathnames">{t('pathnames')}</NavigationLink>
-            <NavigationLink href="/our-services">{t('ourServices')}</NavigationLink>
+            <NavigationLink href="/services">{t('services')}</NavigationLink>
+            <NavigationLink href="/products">{t('products')}</NavigationLink>
           </div>
         </div>
 
