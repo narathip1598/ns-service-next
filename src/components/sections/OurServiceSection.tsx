@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import ServiceCard from '../ServiceCard';
 import { useTranslations } from 'next-intl';
 
 type Card = { 
@@ -30,7 +29,7 @@ export default function OurServiceSection({ t, cards }: Props) {
                 {cards.map((c, i) => (
                     <div key={i} className="flex flex-col items-start">
                         {/* Image */}
-                        <div className="w-full h-64 relative rounded-xl overflow-hidden shadow-lg">
+                        <div className="w-full aspect-[3/4] relative rounded-xl overflow-hidden shadow-lg">
                             <Image
                                 src={c.imgSrc}
                                 alt={c.alt}

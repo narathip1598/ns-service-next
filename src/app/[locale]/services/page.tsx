@@ -21,7 +21,7 @@ export default async function ServicesPage({
 
   const serviceCards = [
     {
-      imgSrc: "/image/news1.png",
+      imgSrc: "/image/news1.jpg",
       title: t("ourService.card1.title"),
       description: t("ourService.card1.description"),
       alt: t("ourService.card1.alt"),
@@ -33,7 +33,7 @@ export default async function ServicesPage({
       alt: t("ourService.card2.alt"),
     },
     {
-      imgSrc: "/image/news3.png",
+      imgSrc: "/image/news3.jpg",
       title: t("ourService.card3.title"),
       description: t("ourService.card3.description"),
       alt: t("ourService.card3.alt"),
