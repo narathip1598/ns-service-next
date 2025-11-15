@@ -1,7 +1,7 @@
 'use client';
 
-import {useTranslations} from 'next-intl';
-import {useEffect} from 'react';
+import { useTranslations } from 'next-intl';
+import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   reset(): void;
 };
 
-export default function Error({error, reset}: Props) {
+export default function Error({ error, reset }: Props) {
   const t = useTranslations('Error');
 
   useEffect(() => {

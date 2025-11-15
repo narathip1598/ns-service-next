@@ -21,7 +21,6 @@ export default async function IndexPage({
 
   const HERO_IMG = "/image/hero.jpg";
   const COMPANY_IMG = "/image/company-profile.png";
-
   const FOOTER_IMG = "/image/Com_Logo-removebg-preview-2.png";
 
   return (
