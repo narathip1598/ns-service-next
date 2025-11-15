@@ -24,7 +24,6 @@ export default async function ProductsPage({
 
   return (
     <PageLayout>
-
       <Footer t={f} imgSrc={FOOTER_IMG} />
     </PageLayout>
   );
