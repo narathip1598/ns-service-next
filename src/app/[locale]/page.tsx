@@ -23,7 +23,7 @@ export default async function IndexPage({
   const HERO_IMG = "/image/hero.jpg";
   const COMPANY_IMG = "/image/company-profile.png";
   const FOOTER_IMG = "/image/Com_Logo-removebg-preview-2.png";
-    const serviceCards = [
+  const serviceCards = [
     {
       imgSrc: "/image/news1.jpg",
       title: t("ourService.card1.title"),
@@ -49,7 +49,7 @@ export default async function IndexPage({
   return (
     <PageLayout>
       <Hero imgSrc={HERO_IMG} title={t("title")} description={t("description")} />
-      <CompanyProfileSection t={t} imageSrc={COMPANY_IMG}/>
+      <CompanyProfileSection t={t} imageSrc={COMPANY_IMG} />
       <ServiceList title={t("ourService.titleList")} cards={serviceCards} />
       <Footer t={f} imgSrc={FOOTER_IMG} />
     </PageLayout>
