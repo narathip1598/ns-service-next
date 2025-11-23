@@ -9,13 +9,14 @@
     "ourService": {
       "title": "Our Services",
       "ownerAlt": "ผู้บริหาร",
+      "titleList": "Services",
       "card1": {
         "title": "ตัวแทนจำหน่ายเครื่องฉีดพลาสติกและอุปกรณ์สำหรับงานอุตสาหกรรม",
         "alt": "เครื่องฉีดพลาสติก",
         "description":"เครื่องใหม่แบรนด์ HWACHIN และ RIJIN"
       },
       "card2": {
-        "title": "ดัดแปลงระบบควบคุมไฟฟ้าและ Servo Motor",
+        "title": "Modify Servo Motor",
         "alt": "งานดัดแปลงระบบ",
         "description":"อัปเกรด / แปลง ระบบไฟฟ้าและระบบ Control"
       },
