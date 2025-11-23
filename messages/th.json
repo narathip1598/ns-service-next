@@ -9,6 +9,7 @@
     "ourService": {
       "title": "Our Services",
       "ownerAlt": "ผู้บริหาร",
+      "titleList": "Services",
       "card1": {
         "title": "ตัวแทนจำหน่ายเครื่องฉีดพลาสติกและอุปกรณ์สำหรับงานอุตสาหกรรม",
         "alt": "เครื่องฉีดพลาสติก",
