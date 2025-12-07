@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import LocaleSwitcher from "./LocaleSwitcher";
 import NavigationLink from "./NavigationLink";
 import Image from "next/image";
@@ -14,6 +14,7 @@ type NavigationProps = {
 
 export default function Navigation({ imgSrc }: NavigationProps) {
   const t = useTranslations("Navigation");
+  const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -26,9 +27,21 @@ export default function Navigation({ imgSrc }: NavigationProps) {
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
 
+  // Match current path against localized routes (e.g. `/en/services`)
   const isActiveLink = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname === href || pathname.startsWith(`${href}/`);
+    const localizedBase =
+      href === "/" ? `/${locale}` : `/${locale}${href}`;
+
+    if (href === "/") {
+      // Home: highlight on exact locale root only
+      return pathname === localizedBase;
+    }
+
+    // Other pages: exact path or sub-paths
+    return (
+      pathname === localizedBase ||
+      pathname.startsWith(`${localizedBase}/`)
+    );
   };
 
   return (
