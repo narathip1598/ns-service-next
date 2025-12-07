@@ -67,10 +67,9 @@ export default function ServiceList({ title, cards }: Props) {
                     onMouseEnter={() => setActiveIndex(index)}
                     onFocus={() => setActiveIndex(index)}
                     className={`flex w-full items-center justify-between py-5 text-left transition
-                      ${
-                        isActive
-                          ? "bg-slate-100 text-slate-900 font-semibold"
-                          : "bg-transparent text-slate-600 hover:bg-slate-50"
+                      ${isActive
+                        ? "bg-slate-100 text-slate-900 font-semibold"
+                        : "bg-transparent text-slate-600 hover:bg-slate-50"
                       }`}
                   >
                     <span className="text-lg">{card.title}</span>
@@ -128,9 +127,8 @@ export default function ServiceList({ title, cards }: Props) {
                   key={i}
                   type="button"
                   onClick={() => setActiveIndex(i)}
-                  className={`h-2 w-2 rounded-full ${
-                    i === activeIndex ? "bg-white" : "bg-white/50"
-                  }`}
+                  className={`h-2 w-2 rounded-full ${i === activeIndex ? "bg-white" : "bg-white/50"
+                    }`}
                   aria-label={`Go to service ${i + 1}`}
                 />
               ))}
