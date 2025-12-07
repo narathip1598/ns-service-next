@@ -150,9 +150,7 @@ export default function ProductSection({ cards }: Props) {
                                                     }`}
                                                 aria-pressed={isActive}
                                             >
-                                                <span className="flex-1 font-medium">
-                                                    {card.title}
-                                                </span>
+                                                <span className="flex-1 font-medium">{card.title}</span>
                                                 {isActive && (
                                                     <span className="ml-3 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/40 text-xs">
                                                         +
@@ -187,7 +185,7 @@ export default function ProductSection({ cards }: Props) {
 
                         {/* Foreground content */}
                         <div className="relative z-10 flex flex-col justify-between h-full p-5 sm:p-6 md:p-8">
-                            {/* Mobile header: only label + counter + arrows (no duplicate title/brand) */}
+                            {/* Mobile header: label + counter + arrows */}
                             <div className="mb-4 flex items-center justify-between lg:hidden">
                                 <div className="flex flex-col">
                                     <p className="text-[10px] uppercase tracking-[0.25em] text-slate-300">
@@ -303,6 +301,24 @@ export default function ProductSection({ cards }: Props) {
                                     />
                                 ))}
                             </div>
+
+                            {/* Desktop arrows: left & right edges */}
+                            <button
+                                type="button"
+                                onClick={handlePrev}
+                                className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white text-lg hover:bg-white/20 focus:outline-none"
+                                aria-label="Previous category"
+                            >
+                                ‹
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleNext}
+                                className="hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white text-lg hover:bg-white/20 focus:outline-none"
+                                aria-label="Next category"
+                            >
+                                ›
+                            </button>
                         </div>
                     </div>
                 </div>
