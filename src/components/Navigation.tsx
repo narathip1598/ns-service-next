@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import LocaleSwitcher from "./LocaleSwitcher";
 import NavigationLink from "./NavigationLink";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 type NavigationProps = {
   imgSrc: string;
@@ -13,6 +15,7 @@ type NavigationProps = {
 export default function Navigation({ imgSrc }: NavigationProps) {
   const t = useTranslations("Navigation");
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const links = [
     { href: "/", label: t("home") },
@@ -22,6 +25,11 @@ export default function Navigation({ imgSrc }: NavigationProps) {
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
+
+  const isActiveLink = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-800/60 bg-slate-900/80 backdrop-blur">
@@ -41,12 +49,25 @@ export default function Navigation({ imgSrc }: NavigationProps) {
           </NavigationLink>
 
           {/* Desktop / tablet links */}
-          <div className="hidden md:flex items-center gap-5 text-sm font-medium">
-            {links.map((link) => (
-              <NavigationLink key={link.href} href={link.href} onClick={closeMenu}>
-                {link.label}
-              </NavigationLink>
-            ))}
+          <div className="hidden md:flex items-center gap-3 lg:gap-5 text-sm font-medium">
+            {links.map((link) => {
+              const active = isActiveLink(link.href);
+              return (
+                <NavigationLink
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={clsx(
+                    "relative rounded-full px-3 py-1.5 transition-colors",
+                    active
+                      ? "bg-white text-slate-900 shadow-sm"
+                      : "text-slate-300 hover:text-white hover:bg-white/10"
+                  )}
+                >
+                  {link.label}
+                </NavigationLink>
+              );
+            })}
           </div>
         </div>
 
@@ -57,7 +78,7 @@ export default function Navigation({ imgSrc }: NavigationProps) {
             <LocaleSwitcher />
           </div>
 
-          {/* Mobile menu button (no LocaleSwitcher here) */}
+          {/* Mobile menu button */}
           <button
             type="button"
             className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-3 py-2 text-xs font-medium text-slate-100 shadow-sm hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 focus-visible:ring-sky-400 md:hidden"
@@ -75,16 +96,22 @@ export default function Navigation({ imgSrc }: NavigationProps) {
               <div className="relative h-4 w-4">
                 {/* Animated hamburger / close icon */}
                 <span
-                  className={`absolute left-0 top-[4px] h-[2px] w-full bg-slate-100 transition-transform duration-200 ${isOpen ? "translate-y-2 rotate-45" : ""
-                    }`}
+                  className={clsx(
+                    "absolute left-0 top-[4px] h-[2px] w-full bg-slate-100 transition-transform duration-200",
+                    isOpen && "translate-y-2 rotate-45"
+                  )}
                 />
                 <span
-                  className={`absolute left-0 top-[10px] h-[2px] w-full bg-slate-100 transition-opacity duration-150 ${isOpen ? "opacity-0" : "opacity-100"
-                    }`}
+                  className={clsx(
+                    "absolute left-0 top-[10px] h-[2px] w-full bg-slate-100 transition-opacity duration-150",
+                    isOpen ? "opacity-0" : "opacity-100"
+                  )}
                 />
                 <span
-                  className={`absolute left-0 top-[16px] h-[2px] w-full bg-slate-100 transition-transform duration-200 ${isOpen ? "-translate-y-2 -rotate-45" : ""
-                    }`}
+                  className={clsx(
+                    "absolute left-0 top-[16px] h-[2px] w-full bg-slate-100 transition-transform duration-200",
+                    isOpen && "-translate-y-2 -rotate-45"
+                  )}
                 />
               </div>
             </div>
@@ -95,23 +122,33 @@ export default function Navigation({ imgSrc }: NavigationProps) {
       {/* Mobile navigation panel */}
       <div
         id="primary-navigation"
-        className={`md:hidden origin-top border-b border-slate-800/60 bg-slate-900/95 backdrop-blur-sm transition-all duration-200 ${isOpen
+        className={clsx(
+          "md:hidden origin-top border-b border-slate-800/60 bg-slate-900/95 backdrop-blur-sm transition-all duration-200",
+          isOpen
             ? "pointer-events-auto max-h-[320px] opacity-100"
             : "pointer-events-none max-h-0 opacity-0"
-          }`}
+        )}
       >
         <div className="mx-auto max-w-6xl px-4 pb-4 pt-2 sm:px-6 lg:px-8">
-          <nav className="space-y-1 text-sm font-medium text-slate-100">
-            {links.map((link) => (
-              <NavigationLink
-                key={link.href}
-                href={link.href}
-                className="block rounded-lg px-3 py-2 hover:bg-white/5"
-                onClick={closeMenu}
-              >
-                {link.label}
-              </NavigationLink>
-            ))}
+          <nav className="space-y-1 text-sm font-medium">
+            {links.map((link) => {
+              const active = isActiveLink(link.href);
+              return (
+                <NavigationLink
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={clsx(
+                    "block rounded-lg px-3 py-2",
+                    active
+                      ? "bg-white text-slate-900"
+                      : "text-slate-100 hover:bg-white/5"
+                  )}
+                >
+                  {link.label}
+                </NavigationLink>
+              );
+            })}
           </nav>
 
           {/* Locale switcher ONLY inside panel on mobile */}
