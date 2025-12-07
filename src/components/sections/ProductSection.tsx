@@ -80,16 +80,50 @@ export default function ProductSection({ cards }: Props) {
         <section className="bg-slate-50">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
                 {/* Section header */}
-                <div className="text-center mb-10">
+                <div className="text-center mb-8 sm:mb-10">
+                    <p className="text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-slate-500 uppercase">
+                        Product
+                    </p>
                     <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 uppercase">
-                        PRODUCTS CATEGORIES
+                        Products Categories
                     </h2>
+                    <p className="mt-3 max-w-2xl mx-auto text-sm sm:text-base text-slate-600">
+                        Explore injection machine series from HWACHIN (Taiwan) and RIJIN
+                        (China), with quick specs and downloadable technical data.
+                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-[280px,minmax(0,1fr)] gap-10 items-stretch">
+                {/* Mobile / tablet category chips */}
+                <div className="mb-6 lg:hidden -mx-4 px-4">
+                    <div className="flex gap-2 overflow-x-auto pb-1">
+                        {cards.map((card, index) => {
+                            const isActive = index === activeIndex;
+                            return (
+                                <button
+                                    key={card.id}
+                                    type="button"
+                                    onClick={() => setActiveIndex(index)}
+                                    className={`flex-shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap transition
+                    ${isActive
+                                            ? "bg-slate-900 text-white border-slate-900"
+                                            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                                        }`}
+                                    aria-pressed={isActive}
+                                >
+                                    <span className="mr-1 text-[10px] uppercase text-slate-400">
+                                        {card.brandKey.toUpperCase()}
+                                    </span>
+                                    {card.title}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-[280px,minmax(0,1fr)] gap-8 lg:gap-10 items-stretch">
                     {/* LEFT – grouped by brand (desktop) */}
-                    <div className="hidden lg:block">
-                        <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden">
+                    <aside className="hidden lg:block">
+                        <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
                             {groupedBrands.map((group) => (
                                 <div
                                     key={group.brandKey}
@@ -114,10 +148,9 @@ export default function ProductSection({ cards }: Props) {
                                                         ? "bg-slate-900 text-white"
                                                         : "bg-white text-slate-700 hover:bg-slate-50"
                                                     }`}
+                                                aria-pressed={isActive}
                                             >
-                                                <span className="flex-1 font-medium">
-                                                    {card.title}
-                                                </span>
+                                                <span className="flex-1 font-medium">{card.title}</span>
                                                 {isActive && (
                                                     <span className="ml-3 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/40 text-xs">
                                                         +
@@ -129,11 +162,11 @@ export default function ProductSection({ cards }: Props) {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </aside>
 
                     {/* RIGHT – main content (image + text) */}
                     <div
-                        className="relative h-full min-h-[360px] sm:min-h-[420px] lg:min-h-[480px] overflow-hidden rounded-2xl bg-slate-900 text-white shadow-xl"
+                        className="relative flex flex-col h-full overflow-hidden rounded-2xl bg-slate-900 text-white shadow-xl"
                         onTouchStart={handleTouchStart}
                         onTouchEnd={handleTouchEnd}
                     >
@@ -147,23 +180,20 @@ export default function ProductSection({ cards }: Props) {
                                 sizes="(min-width: 1024px) 60vw, 100vw"
                                 className="object-cover opacity-40"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/90 via-slate-900/70 to-slate-900/30" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/90 via-slate-900/75 to-slate-900/40" />
                         </div>
 
                         {/* Foreground content */}
-                        <div className="relative z-10 flex h-full flex-col justify-between p-6 sm:p-8">
-                            {/* Mobile header + arrows */}
+                        <div className="relative z-10 flex flex-col justify-between h-full p-5 sm:p-6 md:p-8">
+                            {/* Mobile header: label + counter + arrows */}
                             <div className="mb-4 flex items-center justify-between lg:hidden">
                                 <div className="flex flex-col">
                                     <p className="text-[10px] uppercase tracking-[0.25em] text-slate-300">
                                         Products Categories
                                     </p>
-                                    <h3 className="mt-1 text-xs font-medium text-slate-300">
-                                        {activeCard.brandLabel}
-                                    </h3>
-                                    <h4 className="mt-1 text-xl font-semibold">
-                                        {activeCard.title}
-                                    </h4>
+                                    <p className="mt-1 text-[11px] text-slate-200">
+                                        {activeIndex + 1} / {cards.length}
+                                    </p>
                                 </div>
                                 <div className="flex gap-2">
                                     <button
@@ -185,13 +215,13 @@ export default function ProductSection({ cards }: Props) {
                                 </div>
                             </div>
 
-                            <div className="grid gap-6 lg:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)] items-start">
+                            <div className="grid gap-6 lg:gap-8 lg:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)] items-start">
                                 {/* Text block */}
                                 <div>
-                                    <p className="hidden text-[11px] uppercase tracking-[0.25em] text-slate-300 lg:block">
+                                    <p className="text-[11px] uppercase tracking-[0.25em] text-slate-300">
                                         {activeCard.brandLabel}
                                     </p>
-                                    <h3 className="mt-2 text-2xl sm:text-3xl font-semibold">
+                                    <h3 className="mt-2 text-xl sm:text-2xl md:text-3xl font-semibold">
                                         {activeCard.title}
                                     </h3>
 
@@ -208,7 +238,6 @@ export default function ProductSection({ cards }: Props) {
                                         </p>
                                     )}
 
-                                    {/* Download PDF button with icon */}
                                     {activeCard.specDownloadPath && (
                                         <div className="mt-6">
                                             <p className="text-[11px] uppercase tracking-[0.2em] text-slate-300 mb-2">
@@ -217,10 +246,9 @@ export default function ProductSection({ cards }: Props) {
                                             <a
                                                 href={activeCard.specDownloadPath}
                                                 download
-                                                className="inline-flex items-center gap-3 rounded-full bg-white text-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-wide hover:bg-slate-100 focus:outline-none"
+                                                className="inline-flex w-full sm:w-auto items-center justify-center sm:justify-start gap-3 rounded-full bg-white text-slate-900 px-4 py-2.5 text-xs sm:text-[11px] font-semibold uppercase tracking-wide hover:bg-slate-100 focus:outline-none"
                                             >
-                                                {/* PDF icon */}
-                                                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-red-600/90 shadow-sm">
+                                                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-red-600 shadow-sm">
                                                     <svg
                                                         aria-hidden="true"
                                                         viewBox="0 0 24 24"
@@ -229,7 +257,6 @@ export default function ProductSection({ cards }: Props) {
                                                         <path
                                                             d="M6 2h7l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2z"
                                                             fill="currentColor"
-                                                            opacity="0.9"
                                                         />
                                                         <path
                                                             d="M13 2v5h5"
@@ -239,16 +266,6 @@ export default function ProductSection({ cards }: Props) {
                                                             strokeLinecap="round"
                                                             strokeLinejoin="round"
                                                         />
-                                                        <text
-                                                            x="7.3"
-                                                            y="17"
-                                                            fontSize="6"
-                                                            fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-                                                            fill="white"
-                                                            fontWeight="700"
-                                                        >
-                                                            PDF
-                                                        </text>
                                                     </svg>
                                                 </span>
                                                 <span>Download Spec Sheet (PDF)</span>
@@ -284,6 +301,24 @@ export default function ProductSection({ cards }: Props) {
                                     />
                                 ))}
                             </div>
+
+                            {/* Desktop arrows: left & right edges */}
+                            <button
+                                type="button"
+                                onClick={handlePrev}
+                                className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white text-lg hover:bg-white/20 focus:outline-none"
+                                aria-label="Previous category"
+                            >
+                                ‹
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleNext}
+                                className="hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white text-lg hover:bg-white/20 focus:outline-none"
+                                aria-label="Next category"
+                            >
+                                ›
+                            </button>
                         </div>
                     </div>
                 </div>
