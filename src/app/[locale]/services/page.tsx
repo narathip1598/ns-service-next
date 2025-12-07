@@ -43,14 +43,14 @@ export default async function ServicesPage({
       title: t("ourService.card4.title"),
       description: t("ourService.card4.description"),
       alt: t("ourService.card4.alt"),
-    },
+    }
   ];
 
   const FOOTER_IMG = "/image/Com_Logo-removebg-preview-2.png";
 
   return (
     <PageLayout>
-      <OurServiceSection t={t} cards={serviceCards}/>
+      <OurServiceSection t={t} cards={serviceCards} />
       <Footer t={f} imgSrc={FOOTER_IMG} />
     </PageLayout>
   );

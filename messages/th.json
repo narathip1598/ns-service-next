@@ -77,8 +77,62 @@
     "title": "เส้นทาง"
   },
   "ProductsPage": {
-    "description": "<p>นี่คือหน้าผลิตภัณฑ์ของเรา</p><p>มันแสดงให้เห็นว่าเส้นทางสามารถซ้อนกันและรองรับหลายภาษาได้เช่นกัน</p>",
-    "title": "ผลิตภัณฑ์ของเรา"
+    "title": "Products",
+    "description": "<p>This is the Products page.</p><p>Explore categories from HWACHIN (Taiwan) and RIJIN (China).</p>",
+    "sectionTitleTop": "FLAT PRODUCT",
+    "sectionTitleMain": "PRODUCTS CATEGORIES",
+    "brands": {
+      "hwachin": {
+        "label": "HWACHIN (TAIWAN)"
+      },
+      "rijin": {
+        "label": "RIJIN (CHINA)"
+      }
+    },
+    "productsCategories": {
+      "hrw": {
+        "brand": "hwachin",
+        "title": "HRW-AE/IE SERIES",
+        "description": "High-performance rotary series designed for precision and durability in heavy-duty applications.",
+        "standard": "ISO 9001, CE Certified",
+        "alt": "HRW-AE/IE SERIES"
+      },
+      "hc-se-te": {
+        "brand": "hwachin",
+        "title": "HC-SE/TE SERIES",
+        "description": "Compact and efficient series suitable for varied industrial environments with limited space.",
+        "standard": "JIS B 1186",
+        "alt": "HC-SE/TE SERIES"
+      },
+      "hc-ae-ie": {
+        "brand": "hwachin",
+        "title": "HC-AE/IE SERIES",
+        "description": "Advanced series featuring enhanced energy efficiency and adaptable control configurations.",
+        "standard": "ANSI/ASME",
+        "alt": "HC-AE/IE SERIES"
+      },
+      "dc-se-dcw-se": {
+        "brand": "hwachin",
+        "title": "DC-SE/DCW-SE SERIES",
+        "description": "Direct current series optimized for specific torque requirements and variable speed control.",
+        "standard": "IEC 60034",
+        "alt": "DC-SE/DCW-SE SERIES"
+      },
+      "rj-s1": {
+        "brand": "rijin",
+        "title": "RS SINGLE-COLOR INJECTION MACHINE",
+        "description": "Reliable single-phase series engineered for general industrial applications requiring stable output.",
+        "standard": "GB/T 755",
+        "alt": "RS SINGLE-COLOR INJECTION MACHINE"
+      },
+      "rj-s2": {
+        "brand": "rijin",
+        "title": "RS MIXED COLOR INJECTION MACHINE",
+        "description": "Enhanced multi-purpose series offering improved performance efficiency and long service life.",
+        "standard": "GB/T 12350",
+        "alt": "RS MIXED COLOR INJECTION MACHINE"
+      }
+    }
   },
   "footer": {
     "officeTitle": "สำนักงานใหญ่",
